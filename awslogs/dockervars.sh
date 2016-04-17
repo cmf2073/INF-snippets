@@ -1,9 +1,11 @@
 #!/bin/bash
 
-AWSAK=`grep awsak trec-sid.me | cut -c7-26`
-AWSSAK=`grep awssak trec-sid.me | cut -c8-48`
-echo $AWSAK
-echo $AWSSAK
+AWSAK=`grep awsak certs/ci.file | cut -c7-26`
+AWSSAK=`grep awssak certs/ci.file | cut -c8-48`
+
+## Print values just to see what you get
+#echo $AWSAK
+#echo $AWSSAK
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
