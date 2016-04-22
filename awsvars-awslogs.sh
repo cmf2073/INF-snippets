@@ -11,6 +11,8 @@ SAK=$(grep VAR_sak ../certs/ec2-ci.file | cut -f2 | rev | openssl enc -d -a -A -
 
 
 # Export VARs for use
+
+#export DOCKER_API_VERSION=1.22
 export AWS_ACCESS_KEY_ID=$AK
 export AWS_SECRET_ACCESS_KEY=$SAK
 #export LC_ALL=en_US.UTF-8

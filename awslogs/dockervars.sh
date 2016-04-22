@@ -8,8 +8,12 @@
 
 ### New code
 
-AK=$(grep VAR_ak certs/ci.file | cut -f2 | rev | openssl enc -d -a -A -aes-256-cbc)
-SAK=$(grep VAR_sak certs/ci.file | cut -f2 | rev | openssl enc -d -a -A -aes-256-cbc)
+#AK=$(grep VAR_ak certs/awslogs-ci.file | cut -f2 | rev | openssl enc -d -a -A -aes-256-cbc)
+#SAK=$(grep VAR_sak certs/awslogs-ci.file | cut -f2 | rev | openssl enc -d -a -A -aes-256-cbc)
+
+
+
+source ../awsvars-awslogs.sh
 
 # Print VARs values usto for test purpouses
 #echo $AWSAK

@@ -1,4 +1,4 @@
-source ../awsvars.sh
+source ../awsvars-ec2.sh
 
 #export AWS_VPC_ID=vpc-055fe160
 #export AWS_SECURITY_GROUP=sg-d6e278b3
