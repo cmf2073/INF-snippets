@@ -1,0 +1,86 @@
+define host{
+use                             generic-host
+host_name                       GitLab-SVR
+alias                           GitLab-SVR
+address                         54.68.250.1
+max_check_attempts              5
+check_period                    24x7
+check_interval			1
+#retry_interval			1
+#max_checks_attemps		10
+ check_command			check-host-alive
+notification_interval           30
+notification_period             24x7
+}
+
+define service{
+ #use				local-service,srv-pnp 
+ use				local-service
+ host_name			GitLab-SVR
+ service_description		memory_free
+ check_command			check_ncpa_agent_virtual_memory!free!20:15!15
+ }
+
+define service{
+ use                            local-service
+ host_name                      GitLab-SVR
+ service_description            CPU_Used
+ check_command                  check_ncpa_agent_CPU_used
+ }
+
+define service{
+ use                            local-service
+ host_name                      GitLab-SVR
+ service_description            HDD_UsedPercent
+ check_command                  check_ncpa_agent_hdd_used!"|"!1:50!51:75!76:99
+ }
+
+define service{
+ use                            local-service
+ host_name                      GitLab-SVR
+ service_description            HDD_Name
+ check_command                  check_ncpa_agent_hdd_2!"|"
+ }
+
+define service{
+ use                            local-service
+ host_name                      GitLab-SVR
+ service_description            HDD_Used
+ check_command                  check_ncpa_agent_hdd_3!"|"
+ }
+
+define command{
+ command_name		check_ncpa_agent_virtual_memory
+ #command_line		$USER1$/check_ncpa.py -H $HOSTADDRESS$ -t $USER10$ -M api/memory/virtual/$ARG1$ -w $ARG2$ -c $ARG3$ -u G
+ #command_line		/usr/local/nagios/libexec/check_ncpa.py -H 172.31.14.181 -t claroviajes -M api/memory/virtual/$ARG1$ -w $ARG2$ -c $ARG3$ -u G
+ command_line          /usr/local/nagios/libexec/check_ncpa.py -H 172.31.14.181 -t claroviajes0bbWpn4mIhPvijE -M api/memory/virtual/available
+ }
+
+
+define command{
+ command_name		check_ncpa_agent_CPU_used
+ command_line		/usr/local/nagios/libexec/check_ncpa.py -H 172.31.14.181 -t claroviajes0bbWpn4mIhPvijE -M api/cpu/percent
+ }
+
+define command{
+ command_name           check_ncpa_agent_hdd_used
+ #command_line           /usr/local/nagios/libexec/check_ncpa.py -H 172.31.14.181 -t claroviajes0bbWpn4mIhPvijE -M api/cpu/percent
+ command_line		$USER1$/check_ncpa.py -H $HOSTADDRESS$ -t claroviajes0bbWpn4mIhPvijE -M api/disk/logical/$ARG1$/used_percent -w $ARG2$
+ }
+
+define command{
+ command_name           check_ncpa_agent_hdd_2
+ #command_line           /usr/local/nagios/libexec/check_ncpa.py -H 172.31.14.181 -t claroviajes0bbWpn4mIhPvijE -M api/cpu/percent
+ command_line           $USER1$/check_ncpa.py -H $HOSTADDRESS$ -t claroviajes0bbWpn4mIhPvijE -M api/disk/logical/$ARG1$/device_name
+ }
+
+define command{
+ command_name           check_ncpa_agent_hdd_3
+ #command_line           /usr/local/nagios/libexec/check_ncpa.py -H 172.31.14.181 -t claroviajes0bbWpn4mIhPvijE -M api/cpu/percent
+ command_line           $USER1$/check_ncpa.py -H $HOSTADDRESS$ -t claroviajes0bbWpn4mIhPvijE -M api/disk/logical/$ARG1$/free
+ }
+
+
+
+
+#  $USER1$/check_ncpa.py -H $HOSTADDRESS$ -t claroviajes0bbWpn4mIhPvijE -M api/memory/virtual/$ARG1$
