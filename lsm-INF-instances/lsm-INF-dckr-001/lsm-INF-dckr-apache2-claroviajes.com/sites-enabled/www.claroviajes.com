@@ -1,0 +1,127 @@
+<VirtualHost *:80>
+
+        LogFormat "%{%Y-%m-%d %H:%M:%S}t %m %V%U%q -> %f" dev
+
+        ServerName www.claroviajes.com 
+	ServerAlias m.claroviajes.com
+        ServerAdmin iviajes.telcel@lsm.mx
+        DocumentRoot /var/www/lsm/public/
+
+        <Directory /var/www/lsm/public/>
+         Options -Indexes FollowSymLinks Includes ExecCGI
+         AllowOverride All
+         Allow from all
+        </Directory>
+
+	# Simple rules to send desktop browsers to /web
+	RewriteEngine on
+
+ 	RewriteCond %{HTTP_HOST} ^www\.claroviajes\.com$ [NC]
+        #RewriteRule ^(.*)$ http://pushtravel.com$1 [R=302,L] 
+
+	RewriteRule ^/$ http://pushtravel.com [R=302,L]
+	RewriteRule ^/web$ http://pushtravel.com [R=302,L]
+	RewriteRule ^/web/(.*)$ http://pushtravel.com/$1 [R=302,L]  
+	RewriteRule ^(.*)$ http://pushtravel.com$1 [R=302,L]
+
+        RewriteCond %{HTTP_HOST} !.claroviajes.com$
+        RewriteRule .* - [L,NC]
+
+	RewriteRule ^/web/servicios/hoteles$ http://hoteles.claroviajes.com [R,L]
+        RewriteRule ^/web/servicios/hoteles/$ http://hoteles.claroviajes.com [R,L]
+        RewriteRule ^/servicios/hoteles$ http://hoteles.claroviajes.com [R,L]
+        RewriteRule ^/servicios/hoteles/$ http://hoteles.claroviajes.com [R,L]
+
+        RewriteRule ^/web/servicios/vuelos$ http://vuelos.claroviajes.com [R,L]
+        RewriteRule ^/web/servicios/vuelos/$ http://vuelos.claroviajes.com [R,L]
+
+	#RewriteRule ^/ar$ http://claroviajes.com/ar/ [R,L]
+	#RewriteRule ^/ar/$ http://claroviajes.com/ar/ [R,L]
+	RewriteRule ^/ni$ http://claroviajes.com/ni/ [R,L]
+	RewriteRule ^/ni/$ http://claroviajes.com/ni/ [R,L]
+
+        RewriteRule ^/a$ http://www.claroviajes.com/web/a [R=302,L]
+        RewriteRule ^/a1$ http://www.claroviajes.com/web/a1 [R=302,L]
+        RewriteRule ^/q$ http://www.claroviajes.com/web/q [R=302,L]
+        RewriteRule ^/audi$ http://www.claroviajes.com/web/audi [R=302,L]
+        RewriteRule ^/audi/ayuda$ http://www.claroviajes.com/web/audi/ayuda [R=302,L]
+        RewriteRule ^/subscriptor/login$ http://www.claroviajes.com/web/subscriptor/login [R=302,L]
+        RewriteRule ^/paquetes/info$ http://www.claroviajes.com/web/paquetes/info [R=302,L]
+        RewriteRule ^/busqueda$ http://www.claroviajes.com/web/busqueda [R=302,L]
+	RewriteRule ^/s$ http://www.claroviajes.com/web/s [R=302,L]
+
+        #RewriteRule ^/google2a756b1a23000756.html http://www.claroviajes.com/web/google2a756b1a23000756.html [NC,L]
+	RewriteRule ^/smt$ http://smt.telcel.com/portalone/subscribe.action?&pid=MDSP2000004591&sid=0012102000004244&access=wap&adprovider=wap&pic=http://www.claroviajes.com/web/smt.jpg&language=es&url=http://www.claroviajes.com [NC,L]
+
+	RewriteRule ^/([0-9]+)$ http://www.claroviajes.com/web/$1 [L,NC]
+
+        RewriteRule ^/(?!web|hoteles|_lib|_Ajax|__libFx|Hoteles|Reservacion|Vuelos|vuelos|Autos|autos|Tours|tours|Traslados|traslados|Paquetes|packages|SparksVista)\/?(.*) /web/$1 [L,NC,R=301]
+        RewriteRule ^/([0-9]+)$ http://www.claroviajes.com/web/$1 [L,NC]
+
+
+    	# Proxy everything going to /web to the web app, everything else is mobile
+    	ProxyRequests off
+
+	RewriteRule ^/hoteles/$ http://www.e-tsw.com.mx/Hoteles/Lista?af=iviajes [P,NC,L]
+        RewriteRule ^/Hoteles/(.+)$ http://www.e-tsw.com.mx/Hoteles/$1 [P,NC,L]
+        RewriteRule ^/hoteles/(.*)$ http://www.e-tsw.com.mx/Hoteles/$1 [P,NC,L]
+	
+	RewriteRule ^/vuelos/$ http://www.e-tsw.com.mx/Vuelos/Busqueda?af=iviajes [P,NC,L]
+	RewriteRule ^/vuelos/(.+)$ http://www.e-tsw.com.mx/Vuelos/$1 [P,NC,L]
+	RewriteRule ^/Vuelos/(.*)$ http://www.e-tsw.com.mx/Vuelos/$1 [P,NC,L]
+	
+	RewriteRule ^/autos/(.+)$ http://www.e-tsw.com.mx/Autos/$1 [P,NC,L]
+	RewriteRule ^/autos/$ http://www.e-tsw.com.mx/Autos/Lista?af=iviajes [P,NC,L]
+	RewriteRule ^/Autos/(.*)$ http://www.e-tsw.com.mx/Autos/$1 [P,NC,L]
+	
+	RewriteRule ^/tours/(.+)$ http://www.e-tsw.com.mx/Tours/$1 [P,NC,L]
+	RewriteRule ^/tours/$ http://www.e-tsw.com.mx/Tours/Lista?af=iviajes [P,NC,L]
+	RewriteRule ^/Tours/(.*)$ http://www.e-tsw.com.mx/Tours/$1 [P,NC,L]
+
+	RewriteRule ^/traslados/(.+)$ http://www.e-tsw.com.mx/Traslados/$1 [P,NC,L]
+	RewriteRule ^/traslados/$ http://www.e-tsw.com.mx/Traslados/Lista?af=iviajes [P,NC,L]
+	RewriteRule ^/Traslados/(.*)$ http://www.e-tsw.com.mx/Traslados/$1 [P,NC,L]
+
+	RewriteRule ^/packages/(.+)$ http://www.e-tsw.com.mx/$1 [P,NC,L]
+	RewriteRule ^/packages/$ http://www.e-tsw.com.mx/Paquetes/Busqueda?af=iviajes [P,NC,L]
+	RewriteRule ^/Paquetes/(.*)$ http://www.e-tsw.com.mx/Paquetes/$1 [P,NC,L]
+
+	RewriteRule ^/Reservacion/(.*)$ http://www.e-tsw.com.mx/Reservacion/$1 [P,NC,L]
+	RewriteRule ^/WebAjax/(.+)$ http://www.e-tsw.com.mx/WebAjax/$1 [P,NC,L]
+	RewriteRule ^/__libFx/(.*)$ http://www.e-tsw.com.mx/__libFx/$1 [P,NC,L]
+	RewriteRule ^/_lib/(.+)$ http://www.e-tsw.com.mx/_lib/$1 [P,NC,L]
+	RewriteRule ^/_Ajax/(.+)$ http://www.e-tsw.com.mx/_Ajax/$1 [P,NC,L]
+	RewriteRule ^/SparksVista/(.+)$ http://www.e-tsw.com.mx/SparksVista/$1 [P,NC,L]
+
+	 <Location /web/>
+    		ProxyPassReverseCookiePath / /web
+
+        	#ProxyPass http://prd.lsm.mx:8080/
+        	#ProxyPassReverse http://prd.lsm.mx:8080/
+
+		## Original pointer
+		#ProxyPass http://52.8.3.147:9001/
+                #ProxyPassReverse http://52.8.3.147:9001/
+
+		## Temp Pointer
+		ProxyPass http://54.183.72.160:9001/
+                ProxyPassReverse http://54.183.72.160:9001/
+
+	        # Rewrite urls as needed
+		#ProxyHTMLDoctype XHTML
+		ProxyHTMLDoctype "<!DOCTYPE html>" XML
+        	ProxyHTMLURLMap / /web/
+	        SetOutputFilter proxy-html
+    	</Location>
+
+    	<Proxy *>
+        	Order deny,allow
+        	Allow from all
+        	Satisfy all
+	</Proxy>
+
+        ErrorLog /var/log/apache2/www.claroviajes.com_errors.log
+        LogLevel notice
+        CustomLog /var/log/apache2/www.claroviajes.com_access.log dev
+
+</VirtualHost>

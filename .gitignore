@@ -1,3 +1,4 @@
 awsvars.sh
 certs
 *.key
+*.crt
