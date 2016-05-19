@@ -1,4 +1,5 @@
 awsvars.sh
 certs
+certs_old
 *.key
 *.crt
