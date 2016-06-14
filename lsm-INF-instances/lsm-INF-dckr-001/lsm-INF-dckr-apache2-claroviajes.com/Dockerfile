@@ -16,6 +16,8 @@ ADD httpd.conf /usr/local/apache2/conf/httpd.conf
 ADD sites-enabled/* /usr/local/apache2/sites-enabled/
 ADD sites-available/* /usr/local/apache2/sites-available/
 ADD ssl-certs/* /etc/ssl/
+ADD modules/mod_proxy_html.so /usr/local/apache2/modules/
+ADD modules/libxml2.so.2 /usr/lib/x86_64-linux-gnu/ 
 
 EXPOSE 80
 EXPOSE 443

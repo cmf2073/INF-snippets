@@ -1,0 +1,212 @@
+<VirtualHost *:80>
+
+        LogFormat "%{%Y-%m-%d %H:%M:%S}t %m %V%U%q -> %f" dev
+
+        #ServerName mx-aws.claroviajes.com
+        ServerName web.testpointer.lsmhub.net
+        #ServerAlias vurbia.claroviajes.com
+        ServerAdmin iviajes.telcel@lsm.mx
+#        DocumentRoot /var/www/lsm/public/
+
+#        <Directory /var/www/lsm/public/>
+#         Options -Indexes FollowSymLinks Includes ExecCGI
+#         AllowOverride All
+#         Allow from all
+#        </Directory>
+
+        # Simple rules to send desktop browsers to /web
+        RewriteEngine on
+
+        RewriteCond %{HTTP_HOST} !^web.testpointer.lsmhub.net$
+        RewriteRule .* - [L,NC]
+
+        RewriteRule ^/web/api/private/subscriptors/(.*)$ - [L]
+        RewriteRule ^/fonts/(.*)$ http://web.testpointer.lsmhub.net/ni/fonts/$1 [L]
+
+#        RewriteRule ^/roma$ $1/ [L]
+#        RewriteRule ^/roma/$ - [L]
+#        RewriteRule ^/roma/(.*)$ - [L]
+
+        ##RewriteRule ^/web/servicios/hoteles$ http://hoteles.claroviajes.com [R,L]
+        ##RewriteRule ^/web/servicios/hoteles/$ http://hoteles.claroviajes.com [R,L]
+        ##RewriteRule ^/servicios/hoteles$ http://hoteles.claroviajes.com [R,L]
+        ##RewriteRule ^/servicios/hoteles/$ http://hoteles.claroviajes.com [R,L]
+
+        ##RewriteRule ^/web/servicios/vuelos$ http://vuelos.claroviajes.com [R,L]
+        ##RewriteRule ^/web/servicios/vuelos/$ http://vuelos.claroviajes.com [R,L]
+
+        #RewriteRule ^/ni/ni/(.*)$ /ni/$1 [R,L]
+        RewriteRule ^/ni$ /ni/ [R,L]
+        RewriteRule ^/ni/$ - [L]
+        RewriteRule ^/ni/(.*)$ - [L]
+
+
+        #RewriteRule ^/condicionesdeuso$ http://claroviajes.com/web/aviso [R,L]
+        #RewriteRule ^/condicionesdeuso/$ http://claroviajes.com/web/aviso [R,L]
+
+
+        ##RewriteRule ^/a$ http://claroviajes.com/web/a [R=302,L]
+        ##RewriteRule ^/a1$ http://claroviajes.com/web/a1 [R=302,L]
+        ##RewriteRule ^/q$ http://claroviajes.com/web/q [R=302,L]
+        ##RewriteRule ^/audi$ http://claroviajes.com/web/audi [R=302,L]
+        ##RewriteRule ^/audi/ayuda$ http://claroviajes.com/web/audi/ayuda [R=302,L]
+        ##RewriteRule ^/subscriptor/login$ http://claroviajes.com/web/subscriptor/login [R=302,L]
+        RewriteRule ^/paquetes/info$ http://pushtravel.com/paquetes/info [R=302,L] 
+        ##RewriteRule ^/busqueda$ http://pushtravel.com/busqueda [R=302,L]
+        RewriteRule ^/s$ http://pushtravel.com/s [R=302,L]
+        RewriteRule ^/suscripcion/$ http://pushtravel.com/suscripcion/ [R=302,L]
+        RewriteRule ^/smt/syncOrderRelationship$ http://web.testpointer.lsmhub.net/web/smt/syncOrderRelationship [R=302,L]
+        #RewriteRule ^/web/api/private/subscriptors/(.*)$ http://web.testpointer.lsmhub.net/web/api/private/subscriptors/$1 [R=302,L]
+        RewriteRule ^/web/$ http://pushtravel.com/$1 [R=302,L]
+        RewriteRule ^/web/(.*)$ http://pushtravel.com/$1 [R=302,L]
+
+
+        #RewriteRule ^/google2a756b1a23000756.html http://claroviajes.com/web/google2a756b1a23000756.html [NC,L]
+#        RewriteRule ^/smt$ http://smt.telcel.com/portalone/subscribe.action?&pid=MDSP2000004591&sid=0012102000004244&access=wap&adprovider=wap&pic=https://s3-sa-east-1.amazonaws.com/repos3prd/back-MEX.jpg&buttonPic=https://s3-sa-east-1.amazonaws.com/repos3prd/btn-MEX.gif&css=https://s3-sa-east-1.amazonaws.com/repos3prd/smt-MEX.css&language=es&url=http://claroviajes.com [NC,L]
+
+#        RewriteRule ^/web/smt$ http://smt.telcel.com/portalone/subscribe.action?&pid=MDSP2000004591&sid=0012102000004244&access=wap&adprovider=wap&pic=https://s3-sa-east-1.amazonaws.com/repos3prd/back-MEX.jpg&buttonPic=https://s3-sa-east-1.amazonaws.com/repos3prd/btn-MEX.gif&css=https://s3-sa-east-1.amazonaws.com/repos3prd/smt-MEX.css&language=es&url=http://claroviajes.com [NC,L]
+
+
+#        RewriteRule ^/smt_miami$ http://smt.telcel.com/portalone/subscribe.action?&pid=MDSP2000004591&sid=0012102000004244&access=wap&adprovider=wap&pic=https://s3-sa-east-1.amazonaws.com/repos3prd/back-MEX-ad1.jpg&buttonPic=https://s3-sa-east-1.amazonaws.com/repos3prd/btn_small-MEX_ad1.gif&css=https://s3-sa-east-1.amazonaws.com/repos3prd/smt-MEX.css&language=es&url=http://claroviajes.com [P]
+
+
+        ### Bloque Clroviajes
+        #RewriteRule ^/404$ http://claroviajes.com/web/405 [R=301,L,NC]
+        #RewriteRule ^/404/$ http://claroviajes.com/web/405 [R=301,L,NC]
+
+        #RewriteRule ^/web/401$ http://claroviajes.com/web/419 [R=301,L,NC]
+
+        #RewriteRule ^/([0-9]+)$ http://claroviajes.com/web/$1 [L,NC]
+
+        #RewriteRule ^/(?!web|hoteles|lib|_lib|_Ajax|__libFx|Hoteles|Reservacion|Vuelos|vuelos|Autos|autos|Tours|tours|Traslados|traslados|Paquetes|packages|SparksVista)\/?(.*) /web/$1 [L,NC,R=301]
+        #RewriteRule ^/([0-9]+)$ http://claroviajes.com/web/$1 [L,NC]
+
+
+        ### Bloque PushTravel
+        RewriteRule ^/404$ http://pushtravel.com/405 [R=301,L,NC]
+        RewriteRule ^/404/$ http://pushtravel.com/405 [R=301,L,NC]
+        RewriteRule ^/web/401$ http://pushtravel.com/419 [R=301,L,NC]
+
+        RewriteRule ^/([0-9]+)$ http://pushtravel.com/$1 [L,NC]
+
+        RewriteRule ^/(?!web|hoteles|lib|_lib|_Ajax|__libFx|Hoteles|Reservacion|Vuelos|vuelos|Autos|autos|Tours|tours|Traslados|traslados|Paquetes|packages|SparksVista)\/?(.*) http://pushtravel.com/$1 [L,NC,R=301]
+        RewriteRule ^/([0-9]+)$ http://pushtravel.com/$1 [L,NC]
+
+
+        # Proxy everything going to /web to the web app, everything else is mobile
+        ProxyRequests off
+
+
+                            
+
+        #RewriteRule ^/hoteles/$ http://www.e-tsw.com.mx/Hoteles/Lista?af=iviajes [P,NC,L]
+        #RewriteRule ^/Hoteles/(.+)$ http://www.e-tsw.com.mx/Hoteles/$1 [P,NC,L]
+        #RewriteRule ^/hoteles/(.*)$ http://www.e-tsw.com.mx/Hoteles/$1 [P,NC,L]
+
+        #RewriteRule ^/vuelos/$ http://www.e-tsw.com.mx/Vuelos/Busqueda?af=iviajes [P,NC,L]
+        #RewriteRule ^/vuelos/(.+)$ http://www.e-tsw.com.mx/Vuelos/$1 [P,NC,L]
+        #RewriteRule ^/Vuelos/(.*)$ http://www.e-tsw.com.mx/Vuelos/$1 [P,NC,L]
+
+        #RewriteRule ^/autos/(.+)$ http://www.e-tsw.com.mx/Autos/$1 [P,NC,L]
+        #RewriteRule ^/autos/$ http://www.e-tsw.com.mx/Autos/Lista?af=iviajes [P,NC,L]
+        #RewriteRule ^/Autos/(.*)$ http://www.e-tsw.com.mx/Autos/$1 [P,NC,L]
+
+        #RewriteRule ^/tours/(.+)$ http://www.e-tsw.com.mx/Tours/$1 [P,NC,L]
+        #RewriteRule ^/tours/$ http://www.e-tsw.com.mx/Tours/Lista?af=iviajes [P,NC,L]
+        #RewriteRule ^/Tours/(.*)$ http://www.e-tsw.com.mx/Tours/$1 [P,NC,L]
+
+        #RewriteRule ^/traslados/(.+)$ http://www.e-tsw.com.mx/Traslados/$1 [P,NC,L]
+        #RewriteRule ^/traslados/$ http://www.e-tsw.com.mx/Traslados/Lista?af=iviajes [P,NC,L]
+        #RewriteRule ^/Traslados/(.*)$ http://www.e-tsw.com.mx/Traslados/$1 [P,NC,L]
+
+        #RewriteRule ^/packages/(.+)$ http://www.e-tsw.com.mx/$1 [P,NC,L]
+        #RewriteRule ^/packages/$ http://www.e-tsw.com.mx/Paquetes/Busqueda?af=iviajes [P,NC,L]
+        #RewriteRule ^/Paquetes/(.*)$ http://www.e-tsw.com.mx/Paquetes/$1 [P,NC,L]
+
+        #RewriteRule ^/Reservacion/(.*)$ http://www.e-tsw.com.mx/Reservacion/$1 [P,NC,L]
+        #RewriteRule ^/WebAjax/(.+)$ http://www.e-tsw.com.mx/WebAjax/$1 [P,NC,L]
+        #RewriteRule ^/__libFx/(.*)$ http://www.e-tsw.com.mx/__libFx/$1 [P,NC,L]
+        #RewriteRule ^/_Ajax/(.+)$ http://www.e-tsw.com.mx/_Ajax/$1 [P,NC,L]
+        #RewriteRule ^/SparksVista/(.+)$ http://www.e-tsw.com.mx/SparksVista/$1 [P,NC,L]
+        #RewriteRule ^/_lib/_core/js/(.+)$ http://www.e-tsw.com.mx/_lib/_core/js/$1 [P,NC,L]
+        #RewriteRule ^/lib/core/(.+)$ http://www.e-tsw.com.mx/lib/core/$1 [P,NC,L]
+        #RewriteRule ^/_lib/Ktravel/js/(.+)$ http://www.e-tsw.com.mx/_lib/Ktravel/js/$1 [P,NC,L]
+        #RewriteRule ^/_lib/KTravel/CSS/Designs/(.+)$ http://www.e-tsw.com.mx/_lib/KTravel/CSS/Designs/$1 [P,NC,L]
+        #RewriteRule ^/_lib/(.+)$ http://www.e-tsw.com.mx/_lib/$1 [P,NC,L]
+
+        ProxyPreserveHost ON
+
+         <Location /web/>
+
+                #ProxyPreserveHost ON
+                ProxyPassReverseCookiePath / /web
+
+                ## Original pointer
+                ProxyPass http://52.8.3.147:9001/
+                ProxyPassReverse http://52.8.3.147:9001/
+
+                ## temporal pointer
+                #ProxyPass http://54.183.72.160:9001/
+                #ProxyPassReverse http://54.183.72.160:9001/
+
+                # Rewrite urls as needed
+                #ProxyHTMLDoctype XHTML
+                ProxyHTMLDoctype "<!DOCTYPE html>" XML
+                ProxyHTMLURLMap / /web/
+                           SetOutputFilter proxy-html
+
+                #ServerName mx-aws.claroviajes.com
+
+        </Location>
+
+
+#        <Location /roma/>
+#        #        ProxyPassReverseCookiePath / /roma2
+#        #
+#                ProxyPass http://54.94.220.180:8001/
+#                ProxyPassReverse http://54.94.220.180:8001/
+#
+#                #Rewrite urls as needed
+#                #ProxyHTMLDoctype XHTML
+#                #ProxyHTMLDoctype "<!DOCTYPE html>" XML
+#                #ProxyHTMLURLMap / /roma/
+#                #SetOutputFilter proxy-html
+#        </Location>
+
+
+        <Location /ni/>
+        RequestHeader set Host ni.claroviajes.com
+
+        AddOutputFilterByType SUBSTITUTE text/html
+        AddOutputFilterByType SUBSTITUTE text/css
+        Substitute "s|href=\"/|href=\"/ni/|f"
+        Substitute "s|src=\"/|src=\"/ni/|f"
+        Substitute "s|url\(\"/|url(\"/ni/|f"
+        Substitute "s|action=\"/|action=\"/ni/|f"
+
+        Substitute "s|href=\"/ni/ni|href=\"/ni|f"
+        Substitute "s|src=\"/ni/ni|src=\"/ni|f"
+        Substitute "s|url\(\"/ni/ni|url(\"/ni|f"
+        Substitute "s|action=\"/ni/ni|action=\"/ni|f"
+
+        ProxyPass http://ni.claroviajes.com/
+        ProxyPassReverse http://ni.claroviajes.com/
+
+        #ProxyPass http://54.232.213.44/
+        #ProxyPassReverse http://54.232.213.44/
+
+        SetOutputFilter INFLATE;proxy-html;DEFLATE
+        #RequestHeader unset Accept-Encoding
+        </Location>
+
+        <Proxy *>
+                Order deny,allow
+                Allow from all
+                Satisfy all
+        </Proxy>
+
+ErrorLog /usr/local/apache2/logs/web.testpointer.lsmhub.net_errors.log
+LogLevel notice
+CustomLog /usr/local/apache2/logs/web.testpointer.lsmhub.net_access.log dev
+
+</VirtualHost>
