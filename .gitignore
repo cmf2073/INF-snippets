@@ -3,3 +3,4 @@ certs
 certs_old
 *.key
 *.crt
+*.log
