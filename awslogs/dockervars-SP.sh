@@ -25,3 +25,5 @@ export AWS_SECRET_ACCESS_KEY=$SAK
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export AWS_REGION=sa-east-1
+
+awslogs groups
