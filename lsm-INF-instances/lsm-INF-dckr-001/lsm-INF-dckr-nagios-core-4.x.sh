@@ -1,5 +1,7 @@
 #!/bin/bash
 
+docker tag nagios-core-4.x:latest nagios-core-4.x:rollback
+
 docker build -t nagios-core-4.x:latest ./lsm-INF-dckr-nagios-core-4.x
 
 docker stop lsm-INF-dckr-nagios-core-4.x

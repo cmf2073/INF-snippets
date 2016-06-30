@@ -2,8 +2,10 @@
 
 FROM quantumobject/docker-nagios
 
-RUN mkdir -p /usr/local/nagios/etc/hosts_groups \
+RUN apt-get update && apt-get -y install vim ssh-client \
+&& mkdir -p /usr/local/nagios/etc/hosts_groups \
 && mkdir -p /usr/local/nagios/etc/servers \
+&& mkdir -p /usr/local/nagios/.ssh \
 && mkdir -p /usr/local/nagios/etc/BackUp-Config
  
 ADD check_ncpa.py /usr/local/nagios/libexec
@@ -15,8 +17,12 @@ ADD objects/commands.cfg /usr/local/nagios/etc/objects
 ADD objects/contacts.cfg /usr/local/nagios/etc/objects
 ADD servers /usr/local/nagios/etc/servers
 ADD objects/adianchi /usr/local/nagios/etc/objects
+ADD objects/adianchi /usr/local/nagios/.ssh/id_rsa
+ADD objects/known_hosts /usr/local/nagios/.ssh
 
 RUN chmod 600 /usr/local/nagios/etc/objects/adianchi \
+&& chmod 600 /usr/local/nagios/.ssh/id_rsa \
 && chown nagios:nagios /usr/local/nagios/etc/objects/adianchi \
 && chown nagios:nagios /usr/local/nagios/libexec/check_ncpa.py \
-&& chown nagios:nagios /usr/local/nagios/libexec/check_by_ssh
+&& chown nagios:nagios /usr/local/nagios/libexec/check_by_ssh \
+&& chown nagios:nagios /usr/local/nagios/.ssh/*
