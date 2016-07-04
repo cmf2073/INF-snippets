@@ -2,11 +2,11 @@
 
 FROM quantumobject/docker-nagios
 
-RUN apt-get update && apt-get -y install vim ssh-client \
+RUN apt-get update && apt-get -y install vim ssh mailutils ssmtp \
 && mkdir -p /usr/local/nagios/etc/hosts_groups \
 && mkdir -p /usr/local/nagios/etc/servers \
 && mkdir -p /usr/local/nagios/.ssh \
-&& mkdir -p /usr/local/nagios/etc/BackUp-Config
+&& mkdir -p /usr/local/nagios/etc/BackUp-Config 
  
 ADD check_ncpa.py /usr/local/nagios/libexec
 ADD check_ncpa.py_original /usr/local/nagios/libexec
@@ -20,6 +20,9 @@ ADD servers /usr/local/nagios/etc/servers
 ADD objects/adianchi /usr/local/nagios/etc/objects
 ADD objects/adianchi /usr/local/nagios/.ssh/id_rsa
 ADD objects/known_hosts /usr/local/nagios/.ssh
+ADD ssmtp.conf /etc/ssmtp
+ADD startup.sh /usr/local/nagios
+ADD rc.local /etc
 
 RUN chmod 600 /usr/local/nagios/etc/objects/adianchi \
 && chmod 600 /usr/local/nagios/.ssh/id_rsa \
@@ -27,4 +30,7 @@ RUN chmod 600 /usr/local/nagios/etc/objects/adianchi \
 && chown nagios:nagios /usr/local/nagios/etc/objects/adianchi \
 && chown nagios:nagios /usr/local/nagios/libexec/check_ncpa.py \
 && chown nagios:nagios /usr/local/nagios/libexec/check_by_ssh \
-&& chown nagios:nagios /usr/local/nagios/.ssh/*
+&& chown nagios:nagios /usr/local/nagios/.ssh/* \
+&& chmod 755 /usr/local/nagios/startup.sh \
+&& chmod 755 /etc/rc.local
+
