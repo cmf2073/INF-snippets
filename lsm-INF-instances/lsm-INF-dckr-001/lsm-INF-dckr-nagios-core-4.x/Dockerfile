@@ -13,7 +13,8 @@ ADD check_ncpa.py_original /usr/local/nagios/libexec
 ADD check_by_ssh /usr/local/nagios/libexec
 ADD hosts_groups /usr/local/nagios/etc/hosts_groups
 ADD htpasswd.users /usr/local/nagios/etc/htpasswd.users
-ADD nagios.cfg /usr/local/nagios/etc/nagios.cfg
+## ADD nagios.cfg /usr/local/nagios/etc/nagios.cfg
+ADD nagios_custom.cfg /usr/local/nagios/etc/nagios.cfg
 ADD objects/commands.cfg /usr/local/nagios/etc/objects
 ADD objects/contacts.cfg /usr/local/nagios/etc/objects
 ADD objects/localhost.cfg /usr/local/nagios/etc/objects
