@@ -16,6 +16,7 @@ ADD htpasswd.users /usr/local/nagios/etc/htpasswd.users
 ADD nagios.cfg /usr/local/nagios/etc/nagios.cfg
 ADD objects/commands.cfg /usr/local/nagios/etc/objects
 ADD objects/contacts.cfg /usr/local/nagios/etc/objects
+ADD objects/localhost.cfg /usr/local/nagios/etc/objects
 ADD servers /usr/local/nagios/etc/servers
 ADD objects/adianchi /usr/local/nagios/etc/objects
 ADD objects/adianchi /usr/local/nagios/.ssh/id_rsa
