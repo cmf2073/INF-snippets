@@ -9,4 +9,4 @@ export AWS_VPC_ID=vpc-f1cc0f94
 export AWS_DEFAULT_REGION=us-west-2
 export AWS_ZONE=a
 
-docker-machine -D create --driver amazonec2 --amazonec2-root-size "200" --amazonec2-iam-instance-profile "aws-cloudwatch-logs-variables" $1
+docker-machine -D create --driver amazonec2 --amazonec2-root-size "75" --amazonec2-iam-instance-profile "aws-cloudwatch-logs-variables" $1
