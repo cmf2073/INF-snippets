@@ -1,0 +1,13 @@
+{
+    "IdUrlMapping": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"001-upload-Test"},
+                    "url": {"S":"http://cmfonline.com.ar"}
+                }
+            }
+        }
+
+    ]
+} 

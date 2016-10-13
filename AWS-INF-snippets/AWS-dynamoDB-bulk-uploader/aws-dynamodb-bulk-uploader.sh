@@ -13,8 +13,8 @@ export LANG=en_US.UTF-8
 export AWS_DEFAULT_REGION=us-west-1
 
 #dynamodb test access line
-aws dynamodb scan --table-name IdUrlMapping
+#aws dynamodb scan --table-name IdUrlMapping
 
 
 # Uploader line
-#aws dynamodb batch-write-item --request-items file://$1
+aws dynamodb batch-write-item --request-items file://$1

@@ -1,0 +1,104 @@
+{
+    "IdUrlMapping": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"pais_hn"},
+                    "url": {"S":"http://pushtravel.com.hn"}
+                }
+            }
+        },
+	{
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"android_hn"},
+                    "url": {"S":"https://play.google.com/store/apps/details?id=com.claro.apps.ClaroViajes.latam"}
+                }
+            }
+        },
+	{
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"ios_hn"},
+                    "url": {"S":"https://itunes.apple.com/hn/app/claroviajes-ofertas-viajes/id1090534589"}
+                }
+            }
+        },
+
+	{
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"pais_gt"},
+                    "url": {"S":"http://pushtravel.com.gt"}
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"android_gt"},
+                    "url": {"S":"https://play.google.com/store/apps/details?id=com.claro.apps.ClaroViajes.latam"}
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"ios_gt"},
+                    "url": {"S":"https://itunes.apple.com/gt/app/claroviajes-ofertas-viajes/id1090534589"}
+                }
+            }
+        },
+	
+	{
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"pais_cr"},
+                    "url": {"S":"http://pushtravel.cr"}
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"android_cr"},
+                    "url": {"S":"https://play.google.com/store/apps/details?id=com.claro.apps.ClaroViajes.latam"}
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"ios_cr"},
+                    "url": {"S":"https://itunes.apple.com/cr/app/claroviajes-ofertas-viajes/id1090534589"}
+                }
+            }
+        },
+
+	{
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"pais_sv"},
+                    "url": {"S":"http://pushtravel.com.sv"}
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"android_sv"},
+                    "url": {"S":"https://play.google.com/store/apps/details?id=com.claro.apps.ClaroViajes.latam"}
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"ios_sv"},
+                    "url": {"S":"https://itunes.apple.com/sv/app/claroviajes-ofertas-viajes/id1090534589"}
+                }
+            }
+        }
+
+    ]
+} 

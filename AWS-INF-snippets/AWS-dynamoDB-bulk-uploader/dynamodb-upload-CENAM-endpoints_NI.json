@@ -1,0 +1,28 @@
+{
+    "IdUrlMapping": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"pais_ni"},
+                    "url": {"S":"http://pushtravel.com.ni"}
+                }
+            }
+        },
+	{
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"android_ni"},
+                    "url": {"S":"https://play.google.com/store/apps/details?id=com.claro.apps.ClaroViajes.latam"}
+                }
+            }
+        },
+	{
+            "PutRequest": {
+                "Item": {
+                    "id": {"S":"ios_ni"},
+                    "url": {"S":"https://itunes.apple.com/ni/app/claroviajes-ofertas-viajes/id1090534589"}
+                }
+            }
+        }
+    ]
+} 
