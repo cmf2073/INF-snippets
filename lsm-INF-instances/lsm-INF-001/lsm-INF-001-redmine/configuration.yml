@@ -1,0 +1,11 @@
+production:
+   email_delivery:
+     delivery_method: :smtp
+     smtp_settings:
+       enable_starttls_auto: true
+       address: "smtp.gmail.com"
+       port: 587
+       domain: "lsm.mx" # 'your.domain.com' for GoogleApps
+       authentication: :plain
+       user_name: "redmine@lsm.mx"
+       password: "R3DM1N3Em41"

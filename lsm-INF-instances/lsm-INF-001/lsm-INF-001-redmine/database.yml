@@ -1,0 +1,15 @@
+
+#production:
+#  adapter: "sqlite3"
+#  host: "localhost"
+#  username: "redmine"
+#  database: "sqlite/redmine.db"
+#  encoding: "utf8"
+
+production:
+  adapter: mysql2
+  database: redmine_prd
+  host: RedmineMysqlEngine
+  username: redmineAPP
+  password: redminePass123qweasd
+  encoding: utf8

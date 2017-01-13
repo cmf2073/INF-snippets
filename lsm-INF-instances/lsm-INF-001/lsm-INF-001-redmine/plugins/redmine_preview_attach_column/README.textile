@@ -1,0 +1,133 @@
+h2. Redmine preview attach column & tooltips issues description
+
+* Adds extra column to the Issues list view which shows several issue attributes availability and displays attached images in a lightbox manner. Also plugin adds links to the lightbox galleries to the issue details/message/wiki page views.
+* Adds *lightbox* macro to wiki.
+* Adds options to display issue description in tooltip for the _subject_ column
+
+h3. Usage
+
+To display new column in issues list view please select column named *A* in the list of available columns.
+
+New column has following behavior:
+
+* Single image icon displayed if issue has only one image attached. You can view it inline by clicking on it.
+* Multiple images icon displayed if issue has two or more attached images. Tooltip contains number of images and their names. You can view images inline 'gallery style' by clicking on it.
+* Paperclip button displayed if issue has non-image attachments. Tooltip contains number and names of these attachments. Clicking on icon will redirect you to issues details page.
+* Blank page displayed if issue has description
+* Quote icon displayed if issue has journal entries
+* Star displayed if issue is assigned to current user
+
+Also issue details/message and wiki page has new link *View attached images..* if there are any images attached. You can view images inline 'gallery style' by clicking on it.
+
+h3. Plugin options
+
+Accessible from administrative/plugin page
+
+Columns to preview section
+
+* *Images*
+ Display image icon and allow to view attached images in a overlay gallery
+* *Attachments*
+ Display attached files names
+* *Description availability*
+ Display icon if issue has description
+* *Journal entries availability*
+ Display icon if issue has journal notes
+* *Issues assigned to me*
+ Display icon if issue assigned to current user
+
+Image preview options section
+
+* *Scale images to fit screen*
+ If set by default images would be scaled to fit user screen
+* *Use animation effects*
+ If set animation effects will be used for opening and closing gallery
+
+Issue description tooltip section
+
+* *Enable*
+ Enables issue description tooltips in issues and gantts modules
+* *Tooltip mode*
+ Select default tooltip mode
+* *Pop-up delay*
+ Time (in seconds) before tooltip is shown. You can use fractions, ie _1.5_
+
+h3. User specific options for tooltips
+
+It is possible to control tooltips behavior for each user. To do this, create user' custom field named *Description tooltips* with following parameters:
+
+* Type: List
+* List content:
+** [0] Disable
+** [1] Simple mode
+** [2] With close button
+** [3] Persistent
+
+You can put any text after square brackets - mode identified by number in brackets only
+
+h3. Lightbox macro
+
+This macro adds lightbox galleries support to wiki pages. Macro format:
+
+*lightbox(image_name[,options])*
+
+_image_name_ could be name of the attached file, URL or repository filename. Please do not forget to surround _image_name_ by quotes
+
+Options are
+
+| *Option* | *Value(s)* | *Description* |
+| type | [attach,url,repo] | Explicitly defines type of the _image_name_ reference. |
+| title | "Image title" | Defines link text. |
+| description | "Image description" | Description displayed under image. |
+| scale | [0,1] | Defines image display behavior (0-do not scale to screen, 1-scale) |
+| group | symbol | Defines group id for this image. Images with similar group ids are organized in single gallery. |
+| rev | number | Defines version of the file if similar files are attached (0-newest) or revision for repository entry. |
+| repo_id | identifier | repository identifier if file should be fetched from different repository. |
+| no_icon | 1 | Set this parameter to 1 to disable icon before link name. |
+
+Examples
+
+* *lightbox("new image.jpg",title="Sample image N1",description="First of two",group=1,scale=0)*
+ Displays link with name _Sample image N1_. Click on link opens image attached _new image.jpg_ with description _First of two_, image not scaled to the current viewport and user can browse images whose _group_ is 1.
+* *lightbox("samples/new image 2.jpg",title="Sample image N2",description="Second of two",group=1,repo_id="backup")*
+ Displays link with name _Sample image N2_. Click on link opens image _samples/new image 2.jpg_ from project repository with id _backup_ and with description _First of two_, image uses default behavior for scaling and user can browse images whose _group_ is 1.
+* *lightbox("http://www.example.com/sample.jpg",title="Sample image N3")*
+ Displays link with name _Sample image N3_. Click on link opens image from external URL, image uses default behavior for scaling.
+
+h3. Affected views/patched methods
+
+Plugin patches following classes:
+
+* Query
+* QueryHelper
+* AttachmentHelper
+
+h3. History
+
+0.1.7
+
+* Rails 3 (Redmine 2.x) compatibility
+
+0.1.6
+
+* New tooltip mode - persistent
+* Documentation updated
+
+0.1.5
+
+* Description tooltips added
+* Ability to display different information as icons in column
+
+0.0.5
+
+* Scale and animation options added
+* Added *lightbox* macro to create links for in-place preview images inside wiki pages
+
+0.0.4
+
+* PDF and CSV export compatibility
+
+0.0.3
+
+* First public release
+

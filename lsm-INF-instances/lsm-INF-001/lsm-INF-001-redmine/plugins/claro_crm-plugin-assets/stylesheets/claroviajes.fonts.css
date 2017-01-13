@@ -1,0 +1,248 @@
+
+
+@font-face {
+    font-family: 'din-woff';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/din-webfont.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'din-woff';
+    font-weight: normal;
+    font-style: normal;
+    src: url('../fonts/din_alternate_black-webfont.eot');
+    src: url('../fonts/din_alternate_black-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/din_alternate_black-webfont.woff') format('woff'),
+    url('../fonts/din_alternate_black-webfont.ttf') format('truetype'),
+    url('../fonts/din_alternate_black-webfont.svg#din_alternate_blackregular') format('svg');
+    color:pink;
+}
+
+@font-face {
+    font-family: 'din_alternate_blackregular';
+    src: url('../fonts/din_alternate_black-webfont.eot');
+    src: url('../fonts/din_alternate_black-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/din_alternate_black-webfont.woff') format('woff'),
+    url('../fonts/din_alternate_black-webfont.ttf') format('truetype'),
+    url('../fonts/din_alternate_black-webfont.svg#din_alternate_blackregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'din_alternatebold';
+    src: url('../fonts/din_alternate_bold-webfont.eot');
+    src: url('../fonts/din_alternate_bold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/din_alternate_bold-webfont.woff') format('woff'),
+    url('../fonts/din_alternate_bold-webfont.ttf') format('truetype'),
+    url('../fonts/din_alternate_bold-webfont.svg#din_alternatebold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'din_alternate_lightregular';
+    src: url('../fonts/din_alternate_light-webfont.eot');
+    src: url('../fonts/din_alternate_light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/din_alternate_light-webfont.woff') format('woff'),
+    url('../fonts/din_alternate_light-webfont.ttf') format('truetype'),
+    url('../fonts/din_alternate_light-webfont.svg#din_alternate_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    
+}
+
+
+@font-face {
+    font-family: 'din_alternate_mediumregular';
+    src: url('../fonts/din_alternate_medium-webfont.eot');
+    src: url('../fonts/din_alternate_medium-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/din_alternate_medium-webfont.woff') format('woff'),
+    url('../fonts/din_alternate_medium-webfont.ttf') format('truetype'),
+    url('../fonts/din_alternate_medium-webfont.svg#din_alternate_mediumregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'din_alternateregular';
+    src: url('../fonts/din_alternate-webfont.eot');
+    src: url('../fonts/din_alternate-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/din_alternate-webfont.woff') format('woff'),
+    url('../fonts/din_alternate-webfont.ttf') format('truetype'),
+    url('../fonts/din_alternate-webfont.svg#din_alternateregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'medula_oneregular';
+    src: url('../fonts/medulaone-regular-webfont.eot');
+    src: url('../fonts/medulaone-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/medulaone-regular-webfont.woff2') format('woff2'),
+         url('../fonts/medulaone-regular-webfont.woff') format('woff'),
+         url('../fonts/medulaone-regular-webfont.ttf') format('truetype'),
+         url('../fonts/medulaone-regular-webfont.svg#medula_oneregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_neuelight';
+    src: url('../fonts/bebasneue_light-webfont.eot');
+    src: url('../fonts/bebasneue_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebasneue_light-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue_light-webfont.woff') format('woff'),
+         url('../fonts/bebasneue_light-webfont.ttf') format('truetype'),
+         url('../fonts/bebasneue_light-webfont.svg#bebas_neuelight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_neuebook';
+    src: url('../fonts/bebasneue_book-webfont.eot');
+    src: url('../fonts/bebasneue_book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebasneue_book-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue_book-webfont.woff') format('woff'),
+         url('../fonts/bebasneue_book-webfont.ttf') format('truetype'),
+         url('../fonts/bebasneue_book-webfont.svg#bebas_neuebook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_neuebold';
+    src: url('../fonts/bebasneue_bold-webfont.eot');
+    src: url('../fonts/bebasneue_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebasneue_bold-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue_bold-webfont.woff') format('woff'),
+         url('../fonts/bebasneue_bold-webfont.ttf') format('truetype'),
+         url('../fonts/bebasneue_bold-webfont.svg#bebas_neuebold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_neueregular';
+    src: url('../fonts/bebasneue_regular-webfont.eot');
+    src: url('../fonts/bebasneue_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebasneue_regular-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue_regular-webfont.woff') format('woff'),
+         url('../fonts/bebasneue_regular-webfont.ttf') format('truetype'),
+         url('../fonts/bebasneue_regular-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_neuethin';
+    src: url('../fonts/bebasneue_thin-webfont.eot');
+    src: url('../fonts/bebasneue_thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebasneue_thin-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue_thin-webfont.woff') format('woff'),
+         url('../fonts/bebasneue_thin-webfont.ttf') format('truetype'),
+         url('../fonts/bebasneue_thin-webfont.svg#bebas_neuethin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'romeralregular';
+    src: url('../fonts/romeral-webfont.eot');
+    src: url('../fonts/romeral-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/romeral-webfont.woff2') format('woff2'),
+         url('../fonts/romeral-webfont.woff') format('woff'),
+         url('../fonts/romeral-webfont.ttf') format('truetype'),
+         url('../fonts/romeral-webfont.svg#romeralregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'bebas_neuelight';
+    src: url('../fonts/bebasneue_light-webfont.eot');
+    src: url('../fonts/bebasneue_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebasneue_light-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue_light-webfont.woff') format('woff'),
+         url('../fonts/bebasneue_light-webfont.ttf') format('truetype'),
+         url('../fonts/bebasneue_light-webfont.svg#bebas_neuelight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_neuebook';
+    src: url('../fonts/bebasneue_book-webfont.eot');
+    src: url('../fonts/bebasneue_book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebasneue_book-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue_book-webfont.woff') format('woff'),
+         url('../fonts/bebasneue_book-webfont.ttf') format('truetype'),
+         url('../fonts/bebasneue_book-webfont.svg#bebas_neuebook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_neuebold';
+    src: url('../fonts/bebasneue_bold-webfont.eot');
+    src: url('../fonts/bebasneue_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebasneue_bold-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue_bold-webfont.woff') format('woff'),
+         url('../fonts/bebasneue_bold-webfont.ttf') format('truetype'),
+         url('../fonts/bebasneue_bold-webfont.svg#bebas_neuebold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_neueregular';
+    src: url('../fonts/bebasneue_regular-webfont.eot');
+    src: url('../fonts/bebasneue_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebasneue_regular-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue_regular-webfont.woff') format('woff'),
+         url('../fonts/bebasneue_regular-webfont.ttf') format('truetype'),
+         url('../fonts/bebasneue_regular-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_neuethin';
+    src: url('../fonts/bebasneue_thin-webfont.eot');
+    src: url('../fonts/bebasneue_thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebasneue_thin-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue_thin-webfont.woff') format('woff'),
+         url('../fonts/bebasneue_thin-webfont.ttf') format('truetype'),
+         url('../fonts/bebasneue_thin-webfont.svg#bebas_neuethin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'helveticaneue-light';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/helveticaneue-light-webfont.woff) format('woff');
+}
+
+
+

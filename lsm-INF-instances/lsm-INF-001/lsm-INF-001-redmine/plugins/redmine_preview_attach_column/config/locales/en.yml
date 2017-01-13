@@ -1,0 +1,45 @@
+en:
+# names of trackers, priorities, etc
+  caption_pac_field_preview_attached: "A"
+
+  label_pac_has_attach: "Attachments - %{number}"
+  label_pac_has_images: "Images - %{number}"
+  label_pac_image: "Image"
+  label_pac_of: "of"
+  label_pac_uploaded_by: "by"
+  label_pac_image_gallery: "View attached images..."
+  label_pac_settings_scale: "Scale images to fit screen"
+  label_pac_settings_animate: "Use animation effects"
+
+  label_pac_issue_denied: "Access denied"
+  label_pac_issue_no_description: "No description available"
+
+  label_pac_settings_pac_header: "Image preview options"
+  label_pac_settings_pac_columns: "Columns to preview"
+
+  label_pac_settings_columns_list: "images|attach|descr|journal|my"
+  label_pac_settings_column_images: "Images"
+  label_pac_settings_column_attach: "Attachments"
+  label_pac_settings_column_descr: "Description availability"
+  label_pac_settings_column_journal: "Journal entries availability"
+  label_pac_settings_column_my: "Issues assigned to me"
+
+  label_pac_tip_column_descr: "Has description"
+  label_pac_tip_column_journal: "Has journal entries"
+  label_pac_tip_column_my: "Assigned to me"
+
+
+  label_pac_settings_tips_header: "Issues description tooltips default options"
+  label_pac_settings_issue_tips: "Enable"
+  label_pac_settings_issue_tips_delay: "Pop-up delay (sec)"
+  label_pac_settings_issue_tips_close: "Close button"
+
+  label_pac_settings_issue_tips_mode_0: "Simple"
+  label_pac_settings_issue_tips_mode_1: "With close button"
+  label_pac_settings_issue_tips_mode_2: "Persistent"
+
+# permissions
+#  permission_allow_GENERIC_session_view: "View schedule"
+
+# module name
+#  project_module_GENERIC: "GENERIC module"

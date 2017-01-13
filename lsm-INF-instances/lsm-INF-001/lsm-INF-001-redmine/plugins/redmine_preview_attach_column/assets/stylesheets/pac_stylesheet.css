@@ -1,0 +1,44 @@
+.icon-pac-attach { background-image: url(../images/pac_attach.png); }
+.icon-pac-image { background-image: url(../images/pac_image.png); }
+
+.pac-links-to-images {
+	display: none;	
+}
+
+div.pac-attachments-gallery {
+	font-weight: bold;
+    margin-top: 12px;
+}
+
+div.pac-attachments-gallery a {
+    background: url(../images/pac_single_image.png) no-repeat 1px 1px;
+    padding-left: 20px;
+    padding-right: 15px;
+}
+
+a.pac-link-to-gallery {
+    background: url(../images/eye.png) no-repeat 0% 60%;
+    padding-left: 18px;
+    text-decoration: none;
+}
+
+a:link.pac-link-to-gallery {
+    text-decoration: none;
+}
+
+a:hover.pac-link-to-gallery {
+    text-decoration: underline;
+}
+
+a.pac-link-to-gallery-no-icon {
+    text-decoration: none;
+}
+
+a:link.pac-link-to-gallery-no-icon {
+    text-decoration: none;
+}
+
+a:hover.pac-link-to-gallery-no-icon {
+    text-decoration: underline;
+}
+

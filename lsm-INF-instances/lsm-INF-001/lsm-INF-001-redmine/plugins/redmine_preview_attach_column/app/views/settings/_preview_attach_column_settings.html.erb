@@ -1,0 +1,34 @@
+<fieldset class="box tabular">
+  <legend><strong><%= l(:label_pac_settings_pac_columns) %></strong></legend>
+  <p>
+    <% l(:label_pac_settings_columns_list).split('|').each do |cname| %>
+      <%= check_box_tag "settings[column_#{cname}]", 1, @settings["column_#{cname}"] == '1'? true : false %>
+      <%= l("label_pac_settings_column_#{cname}") %><br/>
+    <% end %>
+  </p>
+</fieldset>
+
+<fieldset class="box tabular">
+  <legend><strong><%= l(:label_pac_settings_pac_header) %></strong></legend>
+  <p>
+    <%= check_box_tag "settings[scale_to_screen]", 1, @settings['scale_to_screen'] == '1'? true : false %>
+    <%= l(:label_pac_settings_scale) %><br/>
+    <%= check_box_tag "settings[animate]", 1, @settings['animate'] == '1'? true : false %>
+    <%= l(:label_pac_settings_animate) %>
+  </p>
+</fieldset>
+
+<fieldset class="box tabular">
+  <legend><strong><%= l(:label_pac_settings_tips_header) %></strong></legend>
+  <p>
+    <%= check_box_tag "settings[tips_enable_for_issues]", 1, @settings['tips_enable_for_issues'] == '1'? true : false %>
+    <%= l(:label_pac_settings_issue_tips) %>
+  </p>
+  <p>
+    <%=  select_tag "settings[tips_close_button]", pac_fill_tooltips_dropdown(@settings['tips_close_button']) %>
+  </p>
+  <p>
+    <%= label_tag('settings[tips_show_delay]', "#{l(:label_pac_settings_issue_tips_delay)}" ) %>
+    <%= text_field_tag 'settings[tips_show_delay]', @settings['tips_show_delay'], {:size => 4, :maxlength => 4 } %>
+  </p>
+</fieldset>
