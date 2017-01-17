@@ -1,12 +1,13 @@
 #!/bin/bash
 
 ## Fuentes del sync
-redmine_source="/opt/redmine-2.5.2/files/"
+redmine_source="/var/apps2/redmine_vol/root/files/"
 design_source="/var/www/design.lms.mx/public/"
 
 
 ## Destinos del sync en AWS-S3 bucket
-redmine_day_folder="Redmine-Backup-"$(date +%A)
+S3redmine_bucket="s3://s3sysadmin2/lsm-INF-001/redmine-backups"
+S3redmine_day_folder="Redmine-filerepo-bkup-"$(date +%A)
 design_day_folder="Design-Backup-"$(date +%A)
 
 ## Test destinos sync
@@ -22,7 +23,7 @@ echo " ========== ========== ========== ========== ========= "
 echo " ========== ========== ========== ========== ========= "
 echo " === $start1 - Comienza la copia de seguridad de archivos de Redmine de $redmine_source a $redmine_day_folder ."
 
-/usr/bin/s3cmd sync --delete-removed $redmine_source s3://s3bucket001-redmine/$redmine_day_folder/
+/usr/bin/s3cmd sync --delete-removed $redmine_source $S3redmine_bucket/$S3redmine_day_folder/
 
 
 ## Linea para log
