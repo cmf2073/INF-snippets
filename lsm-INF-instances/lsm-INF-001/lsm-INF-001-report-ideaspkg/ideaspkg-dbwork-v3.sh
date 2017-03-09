@@ -12,6 +12,34 @@ ideaspkg_path="/usr/local/ideaspkg_root/"
 JobLogFile="$ideaspkg_path/ideaspkg_dbwork.log"
 StartTime=$(date '+%Y-%m-%d:%H:%M:%S')
 
+output_Total=0
+output_Fltr=0
+output_TotalFinal=0
+
+mail_from="Ideas-Package-BOT"
+mail_to="carlos.farina@claroviajes.com,manuk@cmfonline.com.ar"
+mail_subj="Push Travel-MX | Ideas-Package@$ANO_YYY-$MES-$DIA"
+mail_attach="$ideaspkg_path$CARPETAINPUT$ARCHIVO1 $ideaspkg_path$CARPETAINPUT$ARCHIVO2"
+mail_body_text=" Estimados,\n\
+les comparto la informacion referente al flujo Ideas-Package@$ANO_YYY-$MES-$DIA.\n\
+\n\
+- Fecha: $ANO_YYY-$MES-$DIA. \n\
+- Total recibidos: $output_Total. \n\
+- Filtrados: $output_Fltr. (exceptuados por blacklist).\n\
+- Total final: $output_TotalFinal.\n\
+\n\
+Se adjuntan:\n\
+- $ARCHIVO1.csv\n\
+- $ARCHIVO2.csv\n\
+\n\
+Se entienfe por SVA, Servicio Valor Agregado. El archivo que contenga dicha sigla sera el que contiene los números adicionales encargados del control del servicio\n\
+El archivo sin estas siglas será el que NO contenga estos números, lo cual corresponde a la cantidad de líneas descriptas másiba.\n\
+\n\
+Saludos cordiales.\n\
+CmF"
+
+
+
 # Legacy VARS - customized
 clear
 DIA=$(date +"%d")
@@ -244,6 +272,28 @@ mysql -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e "SET GLOBAL TRANSA
 #	echo 'Archivos exportados \n'
 #
 #echo 'Proceso Finalizado.\n'
+
+
+# =====================================================
+# =====================================================
+
+# If files exists both files !!! then
+
+
+
+echo $mail_body_text | mutt -s $mail_subj -a$mail_attach --$mail_to
+
+
+
+
+
+
+
+
+
+
+
+
 echo '------------------------------------------------------------'
 echo '--- FIN ----------------------------------------------------'
 echo '------------------------------------------------------------'

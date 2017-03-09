@@ -6,7 +6,7 @@ year=$(date +"%Y")
 download_folder=$year$month$day
 download_path="/usr/local/ideaspkg_root/"
 excl_file_suffix="_09.csv.FIN"
-JobLogFile="$download_path/ideaspkg_get.log"
+JobLogFile="$download_path/ftp_get.log"
 StartTime=$(date '+%Y-%m-%d:%H:%M:%S')
 
 
@@ -47,5 +47,4 @@ if [ ! -d "$download_path$download_folder" ]; then
                 echo "Folder elready exists, it is assumed that the job has been executed in the past. Bye bye folks!!" >> $JobLogFile
         fi
 echo "Ending job Ideas-Package at $(date '+%Y-%m-%d:%H:%M:%S') (GMT)." >> $JobLogFile
-echo "Run ideaspkg-dbwork" >> $JobLogFile
-/root/bin/ideaspkg_root/ideaspkg-dbwork-v4.sh "$download_folder"
+

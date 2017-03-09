@@ -1,0 +1,2 @@
+01 11 * * * /bin/bash /root/bin/ideaspkg_root/ideaspkg-get-v4.sh
+

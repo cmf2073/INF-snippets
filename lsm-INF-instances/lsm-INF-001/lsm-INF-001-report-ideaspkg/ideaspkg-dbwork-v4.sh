@@ -8,10 +8,64 @@ MySQL_port=3806
 MySQL_USR=dbclaro_usr
 MySQL_ID=u7QbSmPXz
 
+DockerPwdProc="PushTravel-IdeasPkgEngine-v4"
+
 ideaspkg_path="/usr/local/ideaspkg_root/"
 JobLogFile="$ideaspkg_path/ideaspkg_dbwork.log"
 StartTime=$(date '+%Y-%m-%d:%H:%M:%S')
 
+output_Total=0
+output_Fltr=0
+output_Fltr2=0
+output_FltrFinal=0
+output_TotalFinal=0
+
+mail_from="Ideas-Package-BOT"
+#mail_to="carlos.farina@claroviajes.com"
+mail_to="alejandro.shtamoff@pushtravel.com, guillermo.morgan@pushtravel.com, santiago.carmuega@pushtravel.com, carlos.farina@pushtravel.com"
+mail_to_bcc="cmf@cmfonline.com"
+mail_subj="Push Travel-MX | Ideas-Package@$ANO_YYYY-$MES-$DIA"
+mail_attach1="$ideaspkg_path$CARPETAINPUT/$ARCHIVO1.csv"
+mail_attach2="$ideaspkg_path$CARPETAINPUT/$ARCHIVO2.csv"
+mail_body_text="empty_body =-["
+
+## Mail fucntions
+##Content of mail converted to fucntion in order to  have VARs refreshed at send moment
+function upd_mail_subj() {
+	mail_subj="Push Travel-MX | IdeasPackage@$ANO_YYYY-$MES-$DIA"
+}
+
+function upd_mail_attach() {
+        mail_attach1="$ideaspkg_path$CARPETAINPUT/$ARCHIVO1.csv"
+	mail_attach2="$ideaspkg_path$CARPETAINPUT/$ARCHIVO2.csv"
+}
+
+function upd_mail_body() {
+	mail_body_text="<p><span class="s1">Estimados,</span></p>
+<p><span class="s1">se adjunta la informacion relacionada al proceso <strong>Ideas-Package@$ANO_YYYY-$MES-$DIA</strong>.</span></p>
+<p><span class="s1">- </span><span class="s1">Fecha: <strong>$ANO_YYYY-$MES-$DIA</strong>.</span></p>
+<p><span class="s1">- Total recibidos: <strong>$output_Total</strong>.</span></p>
+<p><span class="s1">- Filtrados: <strong>$output_FltrFinal</strong>. (exceptuados por blacklist).</span></p>
+<p><span class="s1">- Total final: <strong>$output_TotalFinal</strong>.</span></p>
+<p><span class="s1">&nbsp;</span></p>
+<p><span class="s1">Se adjuntan:</span></p>
+<p><span class="s1">- <strong>$ARCHIVO1.csv</strong></span></p>
+<p><span class="s1">- <strong>$ARCHIVO2.csv</strong></span></p>
+<p class="p1"><span class="s1">&nbsp;</span></p>
+<table border="1">
+<tbody>
+<tr>
+<td>
+<p class="p1"><span class="s1">Se entiende por SVA, Servicio Valor Agregado. El archivo que contenga dicha sigla ser&aacute; el que contenga los n&uacute;meros adicionales encargados del control del servicio</span></p>
+<p class="p1"><span class="s1">El archivo sin estas siglas ser&aacute; el que NO contenga estos n&uacute;meros, lo cual corresponde a la cantidad de l&iacute;neas descriptas m&aacute;s arriba.</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="p1"><span class="s1">&nbsp;</span></p>
+<p class="p1"><span class="s1">Saludos cordiales.</span></p>
+<p class="p1"><strong><sub><span class="s1">Pwd by $DockerPwdProc</span></sub></strong></p>"
+}
 # Legacy VARS - customized
 clear
 DIA=$(date +"%d")
@@ -81,7 +135,7 @@ echo '---                                                               ---'
 echo '---------------------------------------------------------------------'
 
 echo
-read -n 1 -s -p "Press any key to continue"
+#read -n 1 -s -p "Press any key to continue"
 echo
 
 #Stopper 2
@@ -100,7 +154,7 @@ echo '-------------------------------'
 echo '--- End: Elimino la Tabla   ---'
 echo '-------------------------------'
 #echo
-read -n 1 -s -p "Press any key to continue"
+#read -n 1 -s -p "Press any key to continue"
 #echo
 mysql -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e "SET GLOBAL TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;"
 
@@ -118,7 +172,7 @@ echo '-------------------------------'
 echo '--- End: Creo la Tabla      ---'
 echo '-------------------------------'
 #echo
-read -n 1 -s -p "Press any key to continue"
+#read -n 1 -s -p "Press any key to continue"
 #echo
 
 #Stopper 4
@@ -150,7 +204,7 @@ echo '--------------------------------------'
 echo '--- End: Importacion de Archivos   ---'
 echo '--------------------------------------'
 #echo
-read -n 1 -s -p "Press any key to continue"
+#read -n 1 -s -p "Press any key to continue"
 #echo
 
 #
@@ -165,7 +219,7 @@ echo '--------------------------------------'
 echo '--- End: Update phoneNumber52      ---'
 echo '--------------------------------------'
 echo
-read -n 1 -s -p "Press any key to continue"
+#read -n 1 -s -p "Press any key to continue"
 echo
 
 clear
@@ -178,7 +232,10 @@ sleep 1
 # registros recibidos.
 #
 echo 'Se recibieron (X) numeros de telefonos excluyendo Region 9:'
-mysql -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e  "use DBclaro;SELECT count(phoneNumber) FROM $TABLA;"
+## Added by CmF - Load results into output_Total VAR.
+echo "Content of the VAR output_Total right now is $output_Total."
+output_Total=`mysql -N -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e "use DBclaro;SELECT count(phoneNumber) FROM $TABLA;"`
+echo "After VAR refill the value is $output_Total"
 
 #		
 #Filtrado de registros; TENER EN CUENTA LA TABLA A FILTRAR
@@ -187,24 +244,43 @@ mysql -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e  "use DBclaro;SELE
 echo 'Se filtaron:'
 #mysql -u root -pMercurio2016 -e  "use DBclaro;DELETE FROM DBclaro.$TABLA where CONCAT('52', phoneNumber) IN (SELECT phoneNumber FROM DBclaro.$BLACK) OR phoneNumber like '55%' OR phoneNumber IN (SELECT phoneNumber FROM DBclaro.blackmanual);SELECT row_count();"
 echo
+## Added by CmF - Load results into output_Fltr VAR.
 echo "DELETE FROM $TABLA where phoneNumber like '55%' and length(phoneNumber)>=10;"
-mysql -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e  "use DBclaro;DELETE FROM $TABLA where phoneNumber like '55%' and length(phoneNumber)>=10;SELECT row_count();"
+output_Fltr=`mysql -N -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e  "use DBclaro;DELETE FROM $TABLA where phoneNumber like '55%' and length(phoneNumber)>=10;SELECT row_count();"`
+echo $output_Fltr
 
 echo
+## Added by CmF - Load results into output_Fltr2 VAR.
 echo "DELETE FROM $TABLA where phoneNumber IN (SELECT phoneNumber FROM DBclaro.blackmanual);"
-mysql -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e  "use DBclaro;DELETE FROM $TABLA where phoneNumber IN (SELECT phoneNumber FROM DBclaro.blackmanual);SELECT row_count();"
+output_Fltr2=`mysql -N -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e  "use DBclaro;DELETE FROM $TABLA where phoneNumber IN (SELECT phoneNumber FROM DBclaro.blackmanual);SELECT row_count();"`
+echo $output_Fltr2
 
 echo
 #echo "DELETE FROM $TABLA where phoneNumber52 IN (SELECT phoneNumber FROM $BLACK) LIMIT 100;"
 #mysql -u root -pMercurio2016 -e  "use DBclaro;DELETE FROM $TABLA where phoneNumber52 IN (SELECT phoneNumber FROM $BLACK);SELECT row_count();"
 echo "use DBclaro;DROP TEMPORARY TABLE IF EXISTS ideas_delete;CREATE TEMPORARY TABLE ideas_delete LIKE $TABLA;INSERT INTO ideas_delete SELECT * FROM $TABLA WHERE phoneNumber52 IN (SELECT phoneNumber FROM $BLACK);DELETE FROM $TABLA WHERE phoneNumber IN (SELECT phoneNumber FROM ideas_delete);SELECT row_count();"
-mysql -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e  "use DBclaro;DROP TEMPORARY TABLE IF EXISTS ideas_delete;CREATE TEMPORARY TABLE ideas_delete LIKE $TABLA;INSERT INTO ideas_delete SELECT * FROM $TABLA WHERE phoneNumber52 IN (SELECT phoneNumber FROM $BLACK);DELETE FROM $TABLA WHERE phoneNumber IN (SELECT phoneNumber FROM ideas_delete);SELECT row_count();"
+## Added by CmF - Load results into output_FltrFinal VAR.
+output_FltrFinal=`mysql -N -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e  "use DBclaro;DROP TEMPORARY TABLE IF EXISTS ideas_delete;CREATE TEMPORARY TABLE ideas_delete LIKE $TABLA;INSERT INTO ideas_delete SELECT * FROM $TABLA WHERE phoneNumber52 IN (SELECT phoneNumber FROM $BLACK);DELETE FROM $TABLA WHERE phoneNumber IN (SELECT phoneNumber FROM ideas_delete);SELECT row_count();"`
+echo $output_FltrFinal
 
 #delete from $TABLA where phoneNumber IN (select phoneNumber from blackmanual);select row_count();"
 	
 echo 'Quedaron:'
-mysql -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e  "use DBclaro;SELECT count(phoneNumber) FROM $TABLA;"
+## Added by CmF - Load results into output_TotalFinal VAR.
+output_TotalFinal=`mysql -N -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e  "use DBclaro;SELECT count(phoneNumber) FROM $TABLA;"`
+echo $output_TotalFinal
 echo 
+
+## Control VARs
+if [ $((output_Total - output_FltrFinal)) == "$output_TotalFinal" ]; then
+                echo "Congratulations!!! VARs control succeded!!"
+		echo "$output_Total '-' $output_FltrFinal '=' $output_TotalFinal"
+                else
+                echo "VARs control FAILED!! Exiting"
+                exit 1
+fi
+
+#exit 1
 
 #
 #	echo 'Los reportes se exportaran en: /var/lib/mysql/DBclaro/Reportes/ \n '
@@ -244,6 +320,30 @@ mysql -h$MySQL_host -u$MySQL_USR -p$MySQL_ID -P$MySQL_port -e "SET GLOBAL TRANSA
 #	echo 'Archivos exportados \n'
 #
 #echo 'Proceso Finalizado.\n'
+
+# =====================================================
+# =====================================================
+
+# If files exists both files !!! then
+## Refresh VARs
+upd_mail_subj
+upd_mail_attach
+upd_mail_body
+
+echo "Print VARs data ====="
+echo "mail_body_text $mail_body_text"
+echo "mail_subj $mail_subj"
+echo "mail_attach1 $mail_attach1"
+echo "mail_attach1 $mail_attach2"
+echo "mail_to $mail_to"
+echo "====================="
+
+#model for mail
+#echo $mail_body_text2 | mutt -e "set content_type=text/html" carlos.farina@claroviajes.com -s "$upd_mail_subj" 
+echo $mail_body_text | mutt -e "set content_type=text/html" "$mail_to" -b "$mail_to_bcc" -s "$mail_subj" -a"$mail_attach1" -a "$mail_attach2" 
+#-- "$mail_to"
+
+
 echo '------------------------------------------------------------'
 echo '--- FIN ----------------------------------------------------'
 echo '------------------------------------------------------------'
