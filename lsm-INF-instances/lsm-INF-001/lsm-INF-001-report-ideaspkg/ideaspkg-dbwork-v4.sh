@@ -272,7 +272,7 @@ echo $output_TotalFinal
 echo 
 
 ## Control VARs
-if [ $((output_Total - output_FltrFinal)) == "$output_TotalFinal" ]; then
+if [ $((output_Total - output_FltrFinal - output_Fltr2)) == "$output_TotalFinal" ]; then
                 echo "Congratulations!!! VARs control succeded!!"
 		echo "$output_Total '-' $output_FltrFinal '=' $output_TotalFinal"
                 else
