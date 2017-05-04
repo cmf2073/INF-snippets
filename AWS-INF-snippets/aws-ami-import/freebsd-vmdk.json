@@ -1,0 +1,10 @@
+[
+{
+"Description": "free-bsd vmdk",
+"Format": "vmdk",
+"UserBucket": {
+"S3Bucket": "s3sysadmin2",
+"S3Key": "aws-ec2-img-import/freeBSD_exp-vmdk.vmdk"
+}
+}]
+

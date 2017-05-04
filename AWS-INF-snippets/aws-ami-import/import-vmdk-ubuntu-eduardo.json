@@ -1,0 +1,18 @@
+{
+    "DryRun": false, 
+    "Description": "import-test-002", 
+    "DiskContainers": [
+        {
+            "Description": "import-002-dc-desc", 
+            "Format": "vmdk", 
+            "UserBucket": {
+                "S3Bucket": "s3sysadmin-sa-east-1", 
+                "S3Key": "aws-ec2-img-import/Ubuntu-0-cl1-s001.vmdk"
+            } 
+        }
+    ],
+    "LicenseType": "BYOL", 
+    "Architecture": "x86_64", 
+    "Platform": "Linux", 
+    "ClientToken": "" 
+}

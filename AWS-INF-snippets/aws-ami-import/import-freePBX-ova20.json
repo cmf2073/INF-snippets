@@ -1,0 +1,18 @@
+{
+    "DryRun": false, 
+    "Description": "import-freePBXv1", 
+    "DiskContainers": [
+        {
+            "Description": "import-freePBXv1", 
+            "Format": "ova", 
+            "UserBucket": {
+                "S3Bucket": "s3sysadmin-sa-east-1", 
+                "S3Key": "aws-ec2-img-import/freePBX-ovf20.ova"
+            } 
+        }
+    ],
+    "LicenseType": "BYOL", 
+    "Architecture": "x86_64", 
+    "Platform": "Linux", 
+    "ClientToken": "" 
+}

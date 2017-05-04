@@ -1,0 +1,29 @@
+{
+    "DryRun": true, 
+    "Description": "import-001", 
+    "DiskContainers": [
+        {
+            "Description": "import-001-dc-desc", 
+            "Format": "vmdk", 
+            "Url": "https://s3-us-west-2.amazonaws.com", 
+            "UserBucket": {
+                "S3Bucket": "s3sysadmin2", 
+                "S3Key": "aws-ec2-img-import/freeBSD_exp-vmdk.vmdk"
+            }, 
+            "DeviceName": "", 
+            "SnapshotId": ""
+        }
+    ], 
+    "LicenseType": "BYOL", 
+    "Hypervisor": "", 
+    "Architecture": "", 
+    "Platform": "", 
+    "ClientData": {
+        "UploadStart": null, 
+        "UploadEnd": null, 
+        "UploadSize": null, 
+        "Comment": "Comment"
+    }, 
+    "ClientToken": "", 
+    "RoleName": ""
+}

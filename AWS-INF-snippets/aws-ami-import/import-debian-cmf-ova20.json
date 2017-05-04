@@ -1,0 +1,18 @@
+{
+    "DryRun": false, 
+    "Description": "import-test-003", 
+    "DiskContainers": [
+        {
+            "Description": "import-003-dc-desc", 
+            "Format": "ova", 
+            "UserBucket": {
+                "S3Bucket": "s3sysadmin-sa-east-1", 
+                "S3Key": "aws-ec2-img-import/Debian_VM1-ovf20.ova"
+            } 
+        }
+    ],
+    "LicenseType": "BYOL", 
+    "Architecture": "x86_64", 
+    "Platform": "Linux", 
+    "ClientToken": "" 
+}
