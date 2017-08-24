@@ -11,6 +11,7 @@ RUN apt-get update && apt-get -y install vim ssh mailutils ssmtp python \
 ADD check_curl_smt_handler.sh /opt/nagios/libexec
 ADD check_ncpa.py /opt/nagios/libexec
 ADD check_ncpa.py_original /opt/nagios/libexec
+ADD check_ncpa-1.1.1.py /opt/nagios/libexec
 ADD check_by_ssh /opt/nagios/libexec
 ADD hosts_groups /opt/nagios/etc/hosts_groups
 ADD htpasswd.users /opt/nagios/etc/htpasswd.users
@@ -30,6 +31,7 @@ ADD rc.local /etc
 RUN chmod 600 /opt/nagios/etc/objects/adianchi \
 && chmod 600 /opt/nagios/.ssh/id_rsa \
 && chmod 777 /opt/nagios/libexec/check_ncpa.py \
+&& chmod 777 /opt/nagios/libexec/check_ncpa-1.1.1.py \
 && chmod 777 /opt/nagios/libexec/check_curl_smt_handler.sh \
 && chown nagios:nagios /opt/nagios/etc/objects/adianchi \
 && chown nagios:nagios /opt/nagios/libexec/check_ncpa.py \

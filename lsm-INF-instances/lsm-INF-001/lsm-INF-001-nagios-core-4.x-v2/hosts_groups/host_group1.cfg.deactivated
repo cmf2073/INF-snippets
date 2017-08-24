@@ -1,0 +1,9 @@
+define hostgroup{
+
+	hostgroup_name		Ubuntu Servers
+
+	alias			Ubuntu Servers - Alias
+
+	members			GitLab-SVR
+
+	}
