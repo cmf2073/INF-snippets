@@ -8,7 +8,9 @@ docker build -t redmine:latest ./lsm-INF-001-redmine
 docker stop redmine-v2
 docker rm redmine-v2
 
-docker run --name=redmine-v2 -d -p 80:3000 -p 8082:3000 \
+### disable port 80, active port is 8082
+#docker run --name=redmine-v2 -d -p 80:3000 -p 8082:3000 \
+docker run --name=redmine-v2b -d -p 8082:3000 \
 --link mysql-engine:RedmineMysqlEngine \
 -v /var/apps2/redmine_vol/root/files:/usr/src/redmine/files \
 --env='DB_ADAPTER=mysql2' \
