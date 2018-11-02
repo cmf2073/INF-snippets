@@ -1,13 +1,13 @@
 #!/bin/bash
 
-docker tag nginx-z4:latest nginx-z4:rollback
+docker tag nginx-zx:latest nginx-zx:rollback
 
-docker build -t nginx-z4:latest ./nginx-z4
+docker build -t nginx-zx:latest ./nginx-zx
 
-docker stop nginx-z4
-docker rm nginx-z4
+docker stop nginx-zx
+docker rm nginx-zx
 
-docker run -d -p 80:80 -p 443:443 --log-driver=awslogs --log-opt awslogs-region=us-west-2 --log-opt awslogs-group=pushtravel-z4 --log-opt awslogs-stream=pushtravel-nginx-z4  --restart=always --name=nginx-z4 nginx-z4:latest
+docker run -d -p 80:80 -p 443:443 --log-driver=awslogs --log-opt awslogs-region=us-west-2 --log-opt awslogs-group=pushtravel-zx --log-opt awslogs-stream=pushtravel-nginx-zx  --restart=always --name=nginx-zx nginx-zx:latest
 
 ### original line - before moving
 #docker run -d -p 80:80 -p 443:443 --log-driver=awslogs --log-opt awslogs-region=sa-east-1 --log-opt awslogs-group=pushtravel-z4 --log-opt awslogs-stream=pushtravel-nginx-z4  --restart=always --name=nginx-z4 nginx-z4:latest

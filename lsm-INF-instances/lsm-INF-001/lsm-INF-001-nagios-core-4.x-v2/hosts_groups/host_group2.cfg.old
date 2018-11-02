@@ -4,6 +4,6 @@ define hostgroup{
 
 	alias			Claroviajes-WEB-BO-API
 
-	members			Free-PBX
+	members			Z1-Tomcat,Z2--cv-docker-mathilde,Z3-Tomcat,Z4-Tomcat,Free-PBX
 
 	}
